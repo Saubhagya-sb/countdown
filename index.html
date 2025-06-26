@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countdown to You ❤️</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    #countdown {
+      font-size: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .time-box {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 10px;
+      min-width: 80px;
+    }
+    .label {
+      font-size: 0.8rem;
+      color: #ddd;
+    }
+    .photos{
+        display: flex;
+        justify-items: center;
+        align-items: center;
+        justify-content: space-between;
+    }
+    img{
+        height: 300px;
+        width: 450px;
+    }
+  </style>
+</head>
+<body>
+    <div class="photos">
+       
+        <img src="photo2.jpg" alt="photo2">
+        
+    </div>
+  <h1>Counting down to your Happy 22nd Birthday💖</h1>
+  <div id="countdown">
+    <div class="time-box"><div id="days"></div><div class="label">Days</div></div>
+    <div class="time-box"><div id="hours"></div><div class="label">Hours</div></div>
+    <div class="time-box"><div id="minutes"></div><div class="label">Minutes</div></div>
+    <div class="time-box"><div id="seconds"></div><div class="label">Seconds</div></div>
+  </div>
+
+  <script>
+    const targetDate = new Date('July 27, 2025 00:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
