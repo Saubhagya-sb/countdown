@@ -6,7 +6,7 @@
   <title>Countdown to You ❤️</title>
   <style>
     body {
-      background: linear-gradient(to right, #1e3c72, #2a5298);
+      background: linear-gradient(to right, #b91111, #dd3232);
       color: #fff;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
@@ -46,13 +46,15 @@
     img{
         height: 300px;
         width: 450px;
+        border: solid black 2px ;
+        
     }
   </style>
 </head>
 <body>
     <div class="photos">
        
-        <img src="photo2.jpg" alt="photo2">
+        <img src="photo2.jpg" alt="photo2" id="pictures">
         
     </div>
   <h1>Counting down to your Happy 22nd Birthday💖</h1>
@@ -64,25 +66,53 @@
   </div>
 
   <script>
-    const targetDate = new Date('July 27, 2025 00:00:00').getTime();
+  const targetDate = new Date('July 27, 2025 00:00:00').getTime();
 
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const diff = targetDate - now;
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      document.getElementById('days').textContent = days;
-      document.getElementById('hours').textContent = hours;
-      document.getElementById('minutes').textContent = minutes;
-      document.getElementById('seconds').textContent = seconds;
-    }
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+  }
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Image slideshow (looping infinitely every 3s)
+  const images = [
+    'photo6.jpg',
+    'photo2.jpg',
+    'photo7.jpg',
+    'photo5 (1).jpg',
+    'photo8.jpg',
+    'photo9.jpg',
+    'photo5 (4).jpg',
+    'photo5 (5).jpg',
+    'photo5 (6).jpg',
+    'photo10.jpg',
+    // Add more images as needed
+  ];
+
+  let currentIndex = 0;
+  const imageElement = document.getElementById('pictures');
+
+  function updateImage() {
+    imageElement.src = images[currentIndex];
+    currentIndex = (currentIndex + 1) % images.length;
+  }
+
+  // Start slideshow
+  updateImage(); // set first image
+  setInterval(updateImage, 3000); // change every 3 seconds
+</script>
+
 </body>
 </html>
